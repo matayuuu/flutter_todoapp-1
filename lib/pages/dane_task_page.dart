@@ -156,11 +156,13 @@ class _DoneTaskPageState extends State<DoneTaskPage> {
                                                         '${snapshot.data.documents[index]['title']}を削除しますか？'),
                                                     actions: [
                                                       TextButton(
-                                                          onPressed: () {
+                                                          onPressed: () async{
                                                             // widget.doneTaskList.removeAt(index);
                                                             // Navigator.pop(context);
                                                             // setState(() {
                                                             // });
+                                                            await snapshot.data.documents[index].reference.delete();
+                                                            Navigator.pop(context);
                                                           },
                                                           child: Text('はい')),
                                                       TextButton(

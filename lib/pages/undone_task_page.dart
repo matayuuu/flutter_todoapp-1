@@ -136,10 +136,12 @@ class _UndoneTaskPageState extends State<UndoneTaskPage> {
                                 return AlertDialog(
                                   title: Text('${snapshot.data.documents[index]['title']}を削除しますか？'),
                                 actions: [
-                                  TextButton(onPressed: (){
+                                  TextButton(onPressed: () async{
                                     // widget.undoneTaskList.removeAt(index);
                                     // Navigator.pop(context);
                                     // setState(() {});
+                                    await snapshot.data.documents[index].reference.delete();
+                                    Navigator.pop(context);
                                   },
                                       child: Text('はい')),
                                   TextButton(onPressed: (){
